@@ -1,0 +1,32 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+body {
+  background-color: #002d62;
+  color: whitesmoke;
+}
+
+.HeaderBox {
+  width: 50%;
+  margin: 0 auto;
+}
+
+/* Keep both Header & SubHeader margin to stick together*/
+.Header {
+  background-color: #0e101c;
+  padding: 10px;
+  min-width: 50%;
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 10px 10px 0px 0px;
+}
+.SubHeader {
+  background-color: #0e101c;
+  padding: 10px;
+  min-width: 70%;
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 2px 2px 10px 10px;
+}
