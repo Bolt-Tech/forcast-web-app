@@ -69,7 +69,7 @@ const useStyles = makeStyles({
 });
 
 function createData(days, celsius, farenheit, humidity, condition, icon) {
-  return { days, celsius, farenheit, humidity, condition, icon };
+  return  [days, celsius, farenheit, humidity, condition, icon];
 }
 
 export default function AcccessibleTable(props) {
@@ -103,6 +103,8 @@ export default function AcccessibleTable(props) {
     )
   ];
 
+  const labelTitle = ["Date Forecast","Celsius Average","Farenheit Average","Humidity Average", "Condition", "Icon Status"]; 
+
   return (
     <TableContainer component={Paper} className={classes.tbContainer}>
       <Table className={classes.table} aria-label="caption table">
@@ -112,54 +114,26 @@ export default function AcccessibleTable(props) {
           </p>
         </caption>
         <TableHead>
+          {/* Printing titles */}
           <TableRow className={classes.rowHeader}>
-            <TableCell className={classes.rowHeaderFont} align="center">
-              Date Forecast
-            </TableCell>
-            <TableCell className={classes.rowHeaderFont} align="center">
-              Celsius Average
-            </TableCell>
-            <TableCell className={classes.rowHeaderFont} align="center">
-              Farenheit Average
-            </TableCell>
-            <TableCell className={classes.rowHeaderFont} align="center">
-              Humidity Average
-            </TableCell>
-            <TableCell className={classes.rowHeaderFont} align="center">
-              Condition
-            </TableCell>
-            <TableCell className={classes.rowHeaderFont} align="center">
-              Icon Status
-            </TableCell>
+            {labelTitle.map((title,i) => {
+              return (
+                <TableCell className={classes.rowHeaderFont} align="center" key={i}>
+                  {title}
+                  </TableCell>
+              );
+            })}
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
             //Added ID next to days to make key unique
-            <TableRow key={row.days.ID} className={classes.rows}>
-              <TableCell
-                className={classes.rowsFont}
-                align="center"
-                component="th"
-                scope="row"
-              >
-                {row.days}
-              </TableCell>
-              <TableCell className={classes.rowsFont} align="center">
-                {row.celsius}
-              </TableCell>
-              <TableCell className={classes.rowsFont} align="center">
-                {row.farenheit}
-              </TableCell>
-              <TableCell className={classes.rowsFont} align="center">
-                {row.humidity}
-              </TableCell>
-              <TableCell className={classes.rowsFont} align="center">
-                {row.condition}
-              </TableCell>
-              <TableCell className={classes.rowsFont} align="center">
-                {row.icon}
-              </TableCell>
+            <TableRow  className={classes.rows}>
+              
+              {/* Table Cells */}
+              {row.map((cell) => (
+                 <TableCell className={classes.rowsFont} align="center">{cell}</TableCell>
+              ))}
             </TableRow>
           ))}
         </TableBody>

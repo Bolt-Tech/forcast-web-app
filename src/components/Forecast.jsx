@@ -3,9 +3,8 @@ import axios from "axios";
 import ForecastCard from "./UI/ForecastCard";
 import DataTable from "./UI/ForecastTable";
 import UpdateIcon from "@material-ui/icons/Update";
-//import { Styles } from "@material-ui/core/styles/withStyles";
 
-function Forecast() {
+export default function Forecast() {
   //Location & Current day
   const [locationID, setLocationID] = useState("");
   const [currStats, setCurrStats] = useState([]);
@@ -25,12 +24,14 @@ function Forecast() {
   const [Text_days, set_Text_Days] = useState([]);
   const [Icon_days, set_Icon_Days] = useState([]);
 
+  const {REACT_APP_FORCAST_KEY} = process.env;
+  
   const options = {
     method: "GET",
     url: "https://weatherapi-com.p.rapidapi.com/forecast.json",
     params: { q: "Tel Aviv", days: "3" },
     headers: {
-      "x-rapidapi-key": "aafb68a249msh1fc4bb6651e3434p103a2ajsn3c04f4b307d6",
+      "x-rapidapi-key": `${REACT_APP_FORCAST_KEY}`,
       "x-rapidapi-host": "weatherapi-com.p.rapidapi.com"
     }
   };
@@ -78,6 +79,7 @@ function Forecast() {
           dataFCST.forecastday[1].day.avghumidity,
           dataFCST.forecastday[2].day.avghumidity
         ]);
+
         set_Text_Days([
           dataFCST.forecastday[0].day.condition.text,
           dataFCST.forecastday[1].day.condition.text,
@@ -121,8 +123,8 @@ function Forecast() {
       />
       <DataTable
         date_D1={`Today ${date_Days[0]}`}
-        date_D2={`${date_Days[1]}`}
-        date_D3={`${date_Days[2]}`}
+        date_D2={date_Days[1]}
+        date_D3={date_Days[2]}
         tempC_D1={`${C_Days[0]}${"\u00b0"}`}
         tempC_D2={`${C_Days[1]}${"\u00b0"}`}
         tempC_D3={`${C_Days[2]}${"\u00b0"}`}
@@ -142,5 +144,3 @@ function Forecast() {
     </div>
   );
 }
-
-export default Forecast;
