@@ -9,10 +9,11 @@ Try out demo at [Forecast Web App](https://forecast-web.netlify.app/).
 
 ## Get Started
 
-1. Get free [WeatherAPI.com](https://rapidapi.com/weatherapi/api/weatherapi-com/) from [RapidAPI](https://rapidapi.com/marketplace) Marketplace
-1. Clone `forcast-web-app/` and open with VS Code
-1. Create new file `.env` in root directory and copy the following: 
-```
+1. Get free API key from [WeatherAPI.com](https://rapidapi.com/weatherapi/api/weatherapi-com/) from [RapidAPI](https://rapidapi.com/marketplace) Marketplace
+2. Clone `forcast-web-app/` and open with VS Code
+3. Create new file `.env` in root directory and copy the following: 
+
+```bash
 # Replace 'Your_RapidAPI_Key' with your new API key below
 REACT_APP_FORCAST_KEY=Your_RapidAPI_Key
 ```
