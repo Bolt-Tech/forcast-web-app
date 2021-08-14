@@ -1,5 +1,7 @@
 # Forecast Web App - Built with ReactJS + Material UI
 
+What is our weather condition? This Forecast Web shows a complete weather data that show Celsius or Fahrenheit temperatures, in grid displays a list of different conditions, and in table statistics. All data are updated daily via API.
+
 ## Demo
 Try out demo at [Forecast Web App](https://forecast-web.netlify.app/).
 
