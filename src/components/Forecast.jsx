@@ -3,8 +3,10 @@ import axios from "axios";
 import ForecastCard from "./UI/ForecastCard";
 import DataTable from "./UI/ForecastTable";
 import UpdateIcon from "@material-ui/icons/Update";
+import Loading from './UI/Loader'
 
 export default function Forecast() {
+  const [loading, setLoading] = useState(false);
   //Location & Current day
   const [locationID, setLocationID] = useState("");
   const [currStats, setCurrStats] = useState([]);
@@ -37,6 +39,7 @@ export default function Forecast() {
   };
 
   useEffect(() => {
+    setLoading(true)
     axios
       .request(options)
       .then((response) => {
@@ -90,6 +93,7 @@ export default function Forecast() {
           dataFCST.forecastday[1].day.condition.icon,
           dataFCST.forecastday[2].day.condition.icon
         ]);
+        setLoading(false)
       })
       .catch(function (error) {
         console.error(error);
@@ -105,6 +109,7 @@ export default function Forecast() {
 
   return (
     <div>
+      {loading && <Loading />}
       <ForecastCard
         IconStats={
           <img style={iconStyle} src={currStats[0]} alt={currStats[1]} />
